@@ -28,7 +28,6 @@ function checkSelection() {
             // Si une des devises n'est pas sélectionnée, enlève le lien
             linkHTML.removeAttribute('href');
         }
-        console.log(linkHTML.href)
 }
 function handleButtonClick(button, isBase) {
     const currency = button.dataset.currency;
@@ -53,3 +52,37 @@ function handleButtonClick(button, isBase) {
 
     checkSelection();
 };
+
+const url = new URL(document.location)
+
+
+const base = url.searchParams.get('base')
+const target = url.searchParams.get('target')
+
+if (exchangeRateBtn ){
+exchangeRateBtn.addEventListener("click", ()=>{
+    fetchExchangeRate(base, target)
+    .then(rate => {
+    const result = document.getElementById('result');
+    result.innerHTML = rate;
+    result.style.display = 'block';
+    })
+
+
+})}
+
+async function fetchExchangeRate(base, target) {
+    const apiKey = '39d41333dc932cc45f07b10a';
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${base}/${target}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.conversion_rate; // Retourne le taux de conversion
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}

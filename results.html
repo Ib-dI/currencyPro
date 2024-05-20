@@ -2,14 +2,18 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link rel="icon" type="image/svg+xml" href="img/Mask group.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CurrencyPRO</title>
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body class="">
         <header class="ml-20 flex h-24 w-max items-center gap-56">
-            <div class=""><a href="index.html"><img src="img/Logo.png" alt="" srcset="" /></a></div>
+            <div class="">
+                <a href="index.html"
+                    ><img src="img/Logo.png" alt="" srcset=""
+                /></a>
+            </div>
             <nav class="flex items-center gap-44">
                 <ul class="flex gap-12">
                     <li><a href="#">Currency Converter</a></li>
@@ -29,14 +33,66 @@
         <div
             class="flex flex-col items-center gap-7 bg-neutral-100 pb-[60px] pt-10 text-center"
         >
-            
+            <div class="px-48">
+                <h1 class="text-4xl font-semibold">
+                    Currency<span class="text-brands">pro</span> Converter
+                </h1>
+                <p class="font-normal text-neutral-500">
+                    Check live foreign currency exchange rates
+                </p>
+            </div>
+            <div class="">
+                <p class="text-4xl font-semibold text-brands" id="amount">
+                    $1.00
+                </p>
+            </div>
+            <div class="h-16">
+                <ul class="flex gap-2 *:rounded-[100px] *:bg-white ">
+                    <li>
+                        <div class="flex gap-1">
+                            <img
+                                width="24px"
+                                src="img/flags/flag-european-union.png"
+                                alt=""
+                            />
+                            <p>
+                                Euro-<span class="text-neutral-500">Euro</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-16 h-16 bg-white">
+                            <img
+                                src="img/arrow-left-right-line.png"
+                                alt="arrow-left-right-line"
+                            />
+                        </button>
+                    </li>
+                    <li>
+                        <div class="flex gap-1">
+                            <img
+                                width="24px"
+                                src="img/flags/flag-united-states.png"
+                                alt=""
+                            />
+                            <p>
+                                USD-<span class="text-neutral-500"
+                                    >US Dollar</span
+                                >
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
         <footer
             class="flex flex-col items-center justify-center space-y-28 bg-white pb-12 pt-28"
         >
             <div class="flex gap-12">
                 <div class="logo">
-                    <a href="index.html"><img src="img/Logo.png" alt="logo" /></a>
+                    <a href="index.html"
+                        ><img src="img/Logo.png" alt="logo"
+                    /></a>
                 </div>
                 <div class="flex *:mr-20">
                     <ul role="link" class="custom-ul flex flex-col space-y-4">
