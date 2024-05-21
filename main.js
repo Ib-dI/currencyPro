@@ -59,17 +59,16 @@ const url = new URL(document.location)
 const base = url.searchParams.get('base')
 const target = url.searchParams.get('target')
 
-if (exchangeRateBtn ){
-exchangeRateBtn.addEventListener("click", ()=>{
-    fetchExchangeRate(base, target)
-    .then(rate => {
-    const result = document.getElementById('result');
-    result.innerHTML = rate;
-    result.style.display = 'block';
-    })
-
-
-})}
+// if (exchangeRateBtn ){
+// exchangeRateBtn.addEventListener("click", ()=>{
+//     fetchExchangeRate(base, target)
+//     .then(rate => {
+//     const result = document.getElementById('result');
+//     result.innerHTML = rate;
+//     result.style.display = 'block';
+//     })
+// })
+// }
 
 async function fetchExchangeRate(base, target) {
     const apiKey = '39d41333dc932cc45f07b10a';

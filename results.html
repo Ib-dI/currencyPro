@@ -7,7 +7,7 @@
         <title>CurrencyPRO</title>
         <link rel="stylesheet" href="/style.css" />
     </head>
-    <body class="">
+    <body class="text-dark">
         <header class="ml-20 flex h-24 w-max items-center gap-56">
             <div class="">
                 <a href="index.html"
@@ -47,44 +47,55 @@
                 </p>
             </div>
             <div class="h-16">
-                <ul class="flex gap-2 *:rounded-[100px] *:bg-white ">
-                    <li>
-                        <div class="flex gap-1">
-                            <img
-                                width="24px"
-                                src="img/flags/flag-european-union.png"
-                                alt=""
-                            />
-                            <p>
-                                Euro-<span class="text-neutral-500">Euro</span>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <button class="w-16 h-16 bg-white">
+                <!-- Augmenter la hauteur globale si nécessaire -->
+                <div
+                    class="flex items-center gap-3 *:h-16 *:rounded-[100px] *:bg-white"
+                >
+                    <!-- Utilisez h-full et items-center pour centrer le contenu -->
+                    <div
+                        class="flex w-[233px] items-center justify-center gap-1"
+                    >
+                        <img
+                            width="24px"
+                            src="img/flags/flag-european-union.png"
+                            alt="European Union Flag"
+                        />
+                        <p>Euro-<span class="text-neutral-500">Euro</span></p>
+                    </div>
+                    <div>
+                        <button
+                            class="flex h-16 w-16 items-center justify-center"
+                        >
                             <img
                                 src="img/arrow-left-right-line.png"
                                 alt="arrow-left-right-line"
                             />
                         </button>
-                    </li>
-                    <li>
-                        <div class="flex gap-1">
-                            <img
-                                width="24px"
-                                src="img/flags/flag-united-states.png"
-                                alt=""
-                            />
-                            <p>
-                                USD-<span class="text-neutral-500"
-                                    >US Dollar</span
-                                >
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+                    </div>
+                    <div
+                        class="flex w-[233px] items-center justify-center gap-1"
+                    >
+                        <img
+                            width="24px"
+                            src="img/flags/flag-united-states.png"
+                            alt="United States Flag"
+                        />
+                        <p>
+                            USD-<span class="text-neutral-500">US Dollar</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="mb-2">
+                    <p class="text-neutral-500">1.00 US Dollar=</p>
+                    <p class="font-semibold text-2xl">1.00 Euros</p>
+                </div>
+                <p class="text-neutral-500"> <span class="text-brands">Euro</span> to <span class="text-brands">US Dollar</span> conversion</p>
+
             </div>
         </div>
+
         <footer
             class="flex flex-col items-center justify-center space-y-28 bg-white pb-12 pt-28"
         >
