@@ -1,63 +1,102 @@
+const baseName = document.getElementById('base-name')
+const targetName = document.getElementById('target-name')
+const resultElement = document.getElementById('result');
+const baseElmt = document.getElementById('base-result');
+const baseIcon = document.getElementById('base-icon');
+const baseDescription = document.getElementById('base-description');
+const targetIcon = document.getElementById('target-icon');
+const targetDescription = document.getElementById('target-description');
+const swapButton = document.getElementById('swap-button');
 
 
 // Ajoute un écouteur d'événement pour quand le DOM est complètement chargé
 
 const url = new URL(document.location);
-    const base = url.searchParams.get('base');
-    const target = url.searchParams.get('target');
+let base = url.searchParams.get('base');
+let target = url.searchParams.get('target');
 
-     // Set currency icons and descriptions
-    const baseInfo = getCurrencyInfo(base);
-    const targetInfo = getCurrencyInfo(target);
+// Vérifie si les paramètres 'base' et 'target' sont présents
+// if (base && target) {
+//     try {
 
-    document.getElementById('base-icon').src = baseInfo.icon;
-    document.getElementById('base-description').innerHTML = baseInfo.description;
-    document.getElementById('target-icon').src = targetInfo.icon;
-    document.getElementById('target-description').innerHTML = targetInfo.description;
-
-    // Vérifie si les paramètres 'base' et 'target' sont présents
+//         // const rate = await fetchExchangeRate(base, target);
+//         const result = document.getElementById('result');
+//         if (result) {
+//             result.innerHTML = `${rate}`;
+//         } else {
+//             console.error("L'élément de résultat n'a pas été trouvé.");
+//         }
+//     } catch (error) {
+//         console.error("Erreur lors de la récupération du taux de change :", error);
+//     }
+// } else {
+//     console.error("Les paramètres 'base' et 'target' ne sont pas présents dans l'URL.");
+//     const result = document.getElementById('result');
+//     if (result) {
+//         result.innerHTML = "Les paramètres 'base' et 'target' ne sont pas définis.";
+//     }
+// }
+async function fetchAndDisplayExchangeRate() {
     if (base && target) {
         try {
-
-            // const rate = await fetchExchangeRate(base, target);
-            const result = document.getElementById('result');
-            if (result) {
-                result.innerHTML = `${rate}`;
-            } else {
-                console.error("L'élément de résultat n'a pas été trouvé.");
-            }
+            const baseInfo = getCurrencyInfo(base);
+            const targetInfo = getCurrencyInfo(target);
+            const rate = await fetchExchangeRate(base, target);
+            baseElmt.innerHTML = `1 ${baseInfo.description} =`
+            resultElement.innerHTML = `${rate} ${targetInfo.description}`;
         } catch (error) {
-            console.error("Erreur lors de la récupération du taux de change :", error);
+            resultElement.innerHTML = "Error fetching exchange rate.";
         }
     } else {
-        console.error("Les paramètres 'base' et 'target' ne sont pas présents dans l'URL.");
-        const result = document.getElementById('result');
-        if (result) {
-            result.innerHTML = "Les paramètres 'base' et 'target' ne sont pas définis.";
-        }
+        resultElement.innerHTML = "Invalid parameters.";
     }
+}
 
-    function getCurrencyInfo(currency) {
-        const currencies = {
-            'USD': {
-                icon: 'img/flags/flag-united-states.png',
-                description: 'USD -<span  class="text-neutral-500"> US Dollar </span>'
-            },
-            'EUR': {
-                icon: 'img/flags/flag-european-union.png',
-                description: 'EUR -<span  class="text-neutral-500"> Euro </span>'
-            },
-            'CAD': {
-                icon: 'img/flags/flag-canada.png',
-                description: 'CAD -<span  class="text-neutral-500"> Canadian Dollar </span>'
-            }
-            // Add more currency info here
-        };
-        return currencies[currency] || {
-            icon: 'img/flags/default.png',
-            description: 'Unknown Currency'
-        };
-    }
+swapButton.addEventListener('click', () => {
+    [base, target] = [target, base]; // Swap base and target
+    updateCurrencyDisplay();
+    fetchAndDisplayExchangeRate();
+});
+
+updateCurrencyDisplay();
+await fetchAndDisplayExchangeRate();
+function updateCurrencyDisplay() {
+    const baseInfo = getCurrencyInfo(base);
+    const targetInfo = getCurrencyInfo(target);
+    
+    baseName.textContent = `${base} - `;
+    targetName.textContent = `${target} - `;
+    baseIcon.src = baseInfo.icon;
+    baseDescription.innerText= baseInfo.description;
+    targetIcon.src = targetInfo.icon;
+    targetDescription.innerText = targetInfo.description;
+}
+
+function getCurrencyInfo(currency) {
+    const currencies = {
+        'USD': {
+            name: 'USD',
+            icon: 'img/flags/flag-united-states.png',
+            description: 'US Dollar'
+        },
+        'EUR': {
+            name: 'EUR',
+            icon: 'img/flags/flag-european-union.png',
+            description: 'Euro'
+        },
+        'CAD': {
+            name: 'CAD',
+            icon: 'img/flags/flag-canada.png',
+            description: 'Canadian Dollar'
+        }
+        // Add more currency info here
+    };
+    return currencies[currency] || {
+        name: 'Unknown',
+        icon: 'img/flags/default.png',
+        description: 'Unknown Currency'
+    };
+}
 
 // Fonction pour récupérer le taux de change
 async function fetchExchangeRate(base, target) {

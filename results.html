@@ -15,7 +15,7 @@
                 /></a>
             </div>
             <nav class="flex items-center gap-44">
-                <ul class="flex gap-12 nav">
+                <ul class="nav flex gap-12">
                     <li><a href="#">Currency Converter</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Resources</a></li>
@@ -61,10 +61,16 @@
                             src="img/flags/flag-european-union.png"
                             alt="European Union Flag"
                         />
-                        <p id="base-description">EUR-<span  class="text-neutral-500">Euro</span></p>
+                        <div class="flex">
+                            <p id="base-name">EUR-</p>
+                            <p id="base-description" class="text-neutral-500">
+                                Euro
+                            </p>
+                        </div>
                     </div>
                     <div>
                         <button
+                            id="swap-button"
                             class="flex h-16 w-16 items-center justify-center hover:cursor-pointer"
                         >
                             <img
@@ -82,19 +88,24 @@
                             src="img/flags/flag-united-states.png"
                             alt="United States Flag"
                         />
-                        <p id="target-description">
-                            USD-<span  class="text-neutral-500">US Dollar</span>
-                        </p>
+                        <div class="flex">
+                            <p id="target-name">USD-</p>
+                            <p class="text-neutral-500" id="target-description">
+                                US Dollar
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="">
                 <div class="mb-2">
-                    <p class="text-neutral-500">1.00 US Dollar=</p>
-                    <p id="result" class="font-semibold text-2xl">1.00 Euros</p>
+                    <p id="base-result" class="text-neutral-500">1.00 US Dollar=</p>
+                    <p id="result" class="text-2xl font-semibold">1.00 Euros</p>
                 </div>
-                <p class="text-neutral-500"> <span class="text-brands">Euro</span> to <span class="text-brands">US Dollar</span> conversion</p>
-
+                <p class="text-neutral-500">
+                    <span class="text-brands">Euro</span> to
+                    <span class="text-brands">US Dollar</span> conversion
+                </p>
             </div>
         </div>
 
