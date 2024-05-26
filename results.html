@@ -15,7 +15,7 @@
                 /></a>
             </div>
             <nav class="flex items-center gap-44">
-                <ul class="flex gap-12">
+                <ul class="flex gap-12 nav">
                     <li><a href="#">Currency Converter</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Resources</a></li>
@@ -60,11 +60,11 @@
                             src="img/flags/flag-european-union.png"
                             alt="European Union Flag"
                         />
-                        <p>Euro-<span class="text-neutral-500">Euro</span></p>
+                        <p id="base-currency">EUR-<span class="text-neutral-500">Euro</span></p>
                     </div>
                     <div>
                         <button
-                            class="flex h-16 w-16 items-center justify-center"
+                            class="flex h-16 w-16 items-center justify-center hover:cursor-pointer"
                         >
                             <img
                                 src="img/arrow-left-right-line.png"
@@ -76,11 +76,12 @@
                         class="flex w-[233px] items-center justify-center gap-1"
                     >
                         <img
+                            id="target-icon"
                             width="24px"
                             src="img/flags/flag-united-states.png"
                             alt="United States Flag"
                         />
-                        <p>
+                        <p id="target-currency">
                             USD-<span class="text-neutral-500">US Dollar</span>
                         </p>
                     </div>
@@ -89,7 +90,7 @@
             <div class="">
                 <div class="mb-2">
                     <p class="text-neutral-500">1.00 US Dollar=</p>
-                    <p class="font-semibold text-2xl">1.00 Euros</p>
+                    <p id="result" class="font-semibold text-2xl">1.00 Euros</p>
                 </div>
                 <p class="text-neutral-500"> <span class="text-brands">Euro</span> to <span class="text-brands">US Dollar</span> conversion</p>
 
@@ -162,6 +163,6 @@
                 </div>
             </div>
         </footer>
-        <script type="module" src="/main.js"></script>
+        <script type="module" src="result.js"></script>
     </body>
 </html>

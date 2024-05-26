@@ -1,11 +1,12 @@
 const baseButtons = document.querySelectorAll(".currency-btn"),
-targetButtons = document.querySelectorAll(".target-btn"),
-exchangeRateBtn = document.getElementById('exchange-rate-btn');
+targetButtons = document.querySelectorAll(".target-btn")
+
 
 let selectedBaseCurrency = null;
 let selectedTargetCurrency = null;
 
-
+const exchangeRateBtn = document.getElementById('exchange-rate-btn'); // Assurez-vous que cette classe est correcte
+// console.log(exchangeRateBtn)
 
 document.addEventListener("DOMContentLoaded", () => {
     baseButtons.forEach(button => {
@@ -49,39 +50,69 @@ function handleButtonClick(button, isBase) {
         // Aucun changement d'état des boutons base ici
     }
     
-
     checkSelection();
 };
 
-const url = new URL(document.location)
+// // Récupère l'URL actuelle
+// const url = new URL(document.location);
 
+// // Extrait les paramètres 'base' et 'target' de l'URL
+// const base = url.searchParams.get('base');
+// const target = url.searchParams.get('target');
 
-const base = url.searchParams.get('base')
-const target = url.searchParams.get('target')
+// Sélectionne le bouton pour obtenir le taux de change
+// const exchangeRateBtn = document.getElementById('exchange-rate-btn'); // Assurez-vous que cette classe est correcte
 
-// if (exchangeRateBtn ){
-// exchangeRateBtn.addEventListener("click", ()=>{
-//     fetchExchangeRate(base, target)
-//     .then(rate => {
-//     const result = document.getElementById('result');
-//     result.innerHTML = rate;
-//     result.style.display = 'block';
-//     })
-// })
+// Vérifie si le bouton existe
+// if (exchangeRateBtn) {
+//     // Ajoute un écouteur d'événement de clic au bouton
+//     exchangeRateBtn.addEventListener("click", async () => {
+//         try {
+//             // Appelle la fonction fetchExchangeRate et attend le résultat
+//             const rate = await fetchExchangeRate(base, target);
+//             // Sélectionne l'élément où afficher le résultat
+//             const result = document.getElementById('result');
+//             // Vérifie si l'élément résultat existe
+//             if (result) {
+//                 // Affiche le taux de conversion dans l'élément résultat
+//                 result.innerHTML = `${rate} Euros`;
+//             } else {
+//                 console.error("L'élément de résultat n'a pas été trouvé.");
+//             }
+//         } catch (error) {
+//             console.error("Erreur lors de la récupération du taux de change :", error);
+//         }
+//     });
+// } else {
+//     console.error("Le bouton de taux de change n'a pas été trouvé.");
 // }
 
+// Fonction pour récupérer le taux de change
 async function fetchExchangeRate(base, target) {
     const apiKey = '39d41333dc932cc45f07b10a';
     const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${base}/${target}`;
 
     try {
+        // Fait une requête à l'API pour obtenir le taux de change
         const response = await fetch(url);
+        // Vérifie si la réponse est correcte
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('La réponse du réseau n\'était pas correcte');
         }
+        // Convertit la réponse en JSON
         const data = await response.json();
-        return data.conversion_rate; // Retourne le taux de conversion
+        // Vérifie si le taux de conversion est présent dans les données
+        if (data.conversion_rate) {
+            return data.conversion_rate; // Retourne le taux de conversion
+        } else {
+            throw new Error('Le taux de conversion n\'est pas disponible');
+        }
     } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Il y a eu un problème avec l\'opération fetch:', error);
+        throw error; // Relance l'erreur pour qu'elle soit capturée dans l'écouteur d'événement
     }
 }
+
+
+// fetchExchangeRate('USD', 'EUR')
+

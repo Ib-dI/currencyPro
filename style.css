@@ -49,3 +49,6 @@ button {
     opacity: 0.5;
     cursor: not-allowed;
 }
+.nav a:hover {
+    color: #355FE5;
+}
