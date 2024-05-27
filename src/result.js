@@ -71,8 +71,12 @@ swapButton.addEventListener("click", () => {
     fetchAndDisplayExchangeRate();
 });
 
-updateCurrencyDisplay();
-await fetchAndDisplayExchangeRate();
+async function init() {
+    updateCurrencyDisplay();
+    await fetchAndDisplayExchangeRate();
+}
+
+init();
 function updateCurrencyDisplay() {
     const baseInfo = getCurrencyInfo(base);
     const targetInfo = getCurrencyInfo(target);
@@ -95,17 +99,17 @@ function updateCurrencyDisplay() {
 function getCurrencyInfo(currency) {
     const currencies = {
         USD: {
-            icon: "img/flags/flag-united-states.png",
+            icon: "/img/flags/flag-united-states.png",
             description: "US Dollar",
             wikipedia: "https://en.wikipedia.org/wiki/United_States_dollar"
         },
         EUR: {
-            icon: "img/flags/flag-european-union.png",
+            icon: "/img/flags/flag-european-union.png",
             description: "Euro",
             wikipedia: "https://en.wikipedia.org/wiki/Euro"
         },
         CAD: {
-            icon: "img/flags/flag-canada.png",
+            icon: "/img/flags/flag-canada.png",
             description: "Canadian Dollar",
             wikipedia: "https://en.wikipedia.org/wiki/Canadian_dollar"
         },
