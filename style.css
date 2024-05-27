@@ -37,10 +37,9 @@ button {
 .selected {
     border: 2px solid #355FE5;
 }
-/* .disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-} */
+.refresh-btn{
+    border: 1px solid #355FE5;
+}
 #exchange-rate-btn:disabled {
     background-color: #b3b3b3; /* Grey color for disabled button */
     cursor: not-allowed;
