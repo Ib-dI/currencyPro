@@ -3,9 +3,9 @@ const targetName = document.getElementById('target-name')
 const resultElement = document.getElementById('result');
 const baseElmt = document.getElementById('base-result');
 const baseIcon = document.getElementById('base-icon');
-const baseDescription = document.getElementById('base-description');
+const baseDescription = document.querySelectorAll('.base-description');
 const targetIcon = document.getElementById('target-icon');
-const targetDescription = document.getElementById('target-description');
+const targetDescription = document.querySelectorAll('.target-description');
 const swapButton = document.getElementById('swap-button');
 
 
@@ -42,6 +42,7 @@ async function fetchAndDisplayExchangeRate() {
             const baseInfo = getCurrencyInfo(base);
             const targetInfo = getCurrencyInfo(target);
             const rate = await fetchExchangeRate(base, target);
+            
             baseElmt.innerHTML = `1 ${baseInfo.description} =`
             resultElement.innerHTML = `${rate} ${targetInfo.description}`;
         } catch (error) {
@@ -64,12 +65,12 @@ function updateCurrencyDisplay() {
     const baseInfo = getCurrencyInfo(base);
     const targetInfo = getCurrencyInfo(target);
     
-    baseName.textContent = `${base} - `;
-    targetName.textContent = `${target} - `;
+    baseName.textContent = `${base}- `;
+    targetName.textContent = `${target}- `;
     baseIcon.src = baseInfo.icon;
-    baseDescription.innerText= baseInfo.description;
+    baseDescription.forEach(description => description.textContent = `${baseInfo.description}`) ;
     targetIcon.src = targetInfo.icon;
-    targetDescription.innerText = targetInfo.description;
+    targetDescription.forEach(det => det.textContent = targetInfo.description) ;
 }
 
 function getCurrencyInfo(currency) {
