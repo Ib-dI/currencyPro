@@ -23,7 +23,7 @@
                 <div class="flex w-60 gap-4 *:cursor-pointer">
                     <button class="w-16 pl-4">Log in</button>
                     <button
-                    class="transition ease-in-out delay-150 h-12 w-36 rounded-[100px] bg-brands text-center text-white hover:bg-blue-800 duration-300"
+                        class="h-12 w-36 rounded-[100px] bg-brands text-center text-white transition delay-150 duration-300 ease-in-out hover:bg-blue-800"
                     >
                         Learn More
                     </button>
@@ -104,25 +104,39 @@
                     </p>
                     <p id="result" class="text-2xl font-semibold">1.00 Euros</p>
                 </div>
-                <div class="flex items-center">
-                    <p class="text-neutral-500">
-                        <span class="base-description text-brands underline underline-offset-4">Euro</span>
-                        to
-                        <span class="target-description text-brands underline underline-offset-4"
-                            >US Dollar</span
+                <div class="flex items-center gap-1">
+                    <a id="base-link" href="#" target="_blank">
+                        <p class="text-neutral-500">
+                            <span
+                                class="base-description text-brands underline underline-offset-4"
+                                >Euro</span
+                            >
+                        </p>
+                    </a>
+
+                    <p> to </p>
+                    <a id="target-link" href="#" target="_blank">
+                        <p>
+                            <span
+                                class="target-description text-brands underline underline-offset-4"
+                                > US Dollar </span
+                            >
+                        </p>
+                    </a>
+                    <p>conversion ---</p>
+
+                    <div class="flex items-center">
+                        <p id="last-updated-time" class="text-neutral-500">
+                            Last updated
+                            <span id="">5 minutes ago</span>
+                        </p>
+                        <button
+                            id="refresh-btn"
+                            class="refresh-btn ml-2 h-9 w-[94px] cursor-pointer rounded-[100px] text-center text-brands"
                         >
-                        conversion---
-                    </p>
-                    <p id="last-updated-time" class="text-neutral-500">
-                        Last updated
-                        <span id="">5 minutes ago</span>
-                    </p>
-                    <button
-                        id="refresh-btn"
-                        class="refresh-btn h-9 w-[94px] cursor-pointer rounded-[100px] text-center text-brands ml-2"
-                    >
-                        Refresh
-                    </button>
+                            Refresh
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

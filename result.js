@@ -8,6 +8,9 @@ const targetIcon = document.getElementById("target-icon");
 const targetDescription = document.querySelectorAll(".target-description");
 const swapButton = document.getElementById("swap-button");
 
+const baseLink = document.getElementById("base-link");
+
+const targetLink = document.getElementById("target-link");
 // Ajoute un écouteur d'événement pour quand le DOM est complètement chargé
 
 const url = new URL(document.location);
@@ -84,6 +87,9 @@ function updateCurrencyDisplay() {
     targetDescription.forEach(
         (det) => (det.textContent = targetInfo.description),
     );
+    // Met à jour les liens vers les pages Wikipédia
+    baseLink.href = baseInfo.wikipedia;
+    targetLink.href = targetInfo.wikipedia;
 }
 
 function getCurrencyInfo(currency) {
@@ -91,21 +97,25 @@ function getCurrencyInfo(currency) {
         USD: {
             icon: "img/flags/flag-united-states.png",
             description: "US Dollar",
+            wikipedia: "https://en.wikipedia.org/wiki/United_States_dollar"
         },
         EUR: {
             icon: "img/flags/flag-european-union.png",
             description: "Euro",
+            wikipedia: "https://en.wikipedia.org/wiki/Euro"
         },
         CAD: {
             icon: "img/flags/flag-canada.png",
             description: "Canadian Dollar",
+            wikipedia: "https://en.wikipedia.org/wiki/Canadian_dollar"
         },
-        // Add more currency info here
+        // Ajoutez plus d'informations sur les devises ici
     };
     return (
         currencies[currency] || {
             icon: "img/flags/default.png",
             description: "Unknown Currency",
+            wikipedia: "https://en.wikipedia.org/wiki/Currency"
         }
     );
 }
