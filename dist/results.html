@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="img/Mask group.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CurrencyPRO</title>
+      <script type="module" crossorigin src="/assets/results-BhPZzO9P.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/style-ceMUldZf.js">
+      <link rel="stylesheet" crossorigin href="/assets/style-D02ZFghE.css">
+    </head>
+    <body class="text-dark">
+        <header class="ml-20 flex h-24 w-max items-center gap-56">
+            <div class="">
+                <a href="index.html"
+                    ><img src="img/Logo.png" alt="" srcset=""
+                /></a>
+            </div>
+            <nav class="flex items-center gap-44">
+                <ul class="nav flex gap-12">
+                    <li><a href="#">Currency Converter</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+                <div class="flex w-60 gap-4 *:cursor-pointer">
+                    <button class="w-16 pl-4">Log in</button>
+                    <button
+                        class="h-12 w-36 rounded-[100px] bg-brands text-center text-white transition delay-150 duration-300 ease-in-out hover:bg-blue-800"
+                    >
+                        Learn More
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <div
+            class="flex flex-col items-center gap-7 bg-neutral-100 pb-[60px] pt-10 text-center"
+        >
+            <div class="px-48">
+                <h1 class="text-4xl font-semibold">
+                    Currency<span class="text-brands">pro</span> Converter
+                </h1>
+                <p class="font-normal text-neutral-500">
+                    Check live foreign currency exchange rates
+                </p>
+            </div>
+            <div class="">
+                <p class="text-4xl font-semibold text-brands" id="amount">
+                    $1.00
+                </p>
+            </div>
+            <div class="h-16">
+                <!-- Augmenter la hauteur globale si nécessaire -->
+                <div
+                    class="flex items-center gap-3 *:h-16 *:rounded-[100px] *:bg-white *:shadow-md"
+                >
+                    <!-- Utilisez h-full et items-center pour centrer le contenu -->
+                    <div
+                        class="flex w-[233px] items-center justify-center gap-1"
+                    >
+                        <img
+                            id="base-icon"
+                            width="24px"
+                            src="img/flags/flag-european-union.png"
+                            alt="European Union Flag"
+                        />
+                        <div class="flex">
+                            <p id="base-name">EUR-</p>
+                            <p id="" class="base-description text-neutral-500">
+                                Euro
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            id="swap-button"
+                            class="flex h-16 w-16 items-center justify-center hover:cursor-pointer"
+                        >
+                            <img
+                                src="img/arrow-left-right-line.png"
+                                alt="arrow-left-right-line"
+                            />
+                        </button>
+                    </div>
+                    <div
+                        class="flex w-[233px] items-center justify-center gap-1"
+                    >
+                        <img
+                            id="target-icon"
+                            width="24px"
+                            src="img/flags/flag-united-states.png"
+                            alt="United States Flag"
+                        />
+                        <div class="flex">
+                            <p id="target-name">USD-</p>
+                            <p class="target-description text-neutral-500">
+                                US Dollar
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="mb-2">
+                    <p id="base-result" class="text-neutral-500">
+                        1.00 US Dollar=
+                    </p>
+                    <p id="result" class="text-2xl font-semibold">1.00 Euros</p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <a id="base-link" href="#" target="_blank">
+                        <p class="text-neutral-500">
+                            <span
+                                class="base-description text-brands underline underline-offset-4"
+                                >Euro</span
+                            >
+                        </p>
+                    </a>
+
+                    <p> to </p>
+                    <a id="target-link" href="#" target="_blank">
+                        <p>
+                            <span
+                                class="target-description text-brands underline underline-offset-4"
+                                > US Dollar </span
+                            >
+                        </p>
+                    </a>
+                    <p>conversion ---</p>
+
+                    <div class="flex items-center">
+                        <p id="last-updated-time" class="text-neutral-500">
+                            Last updated
+                            <span id="">5 minutes ago</span>
+                        </p>
+                        <button
+                            id="refresh-btn"
+                            class="refresh-btn ml-2 h-9 w-[94px] cursor-pointer rounded-[100px] text-center text-brands"
+                        >
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer
+            class="flex flex-col items-center justify-center space-y-28 bg-white pb-12 pt-28"
+        >
+            <div class="flex gap-12">
+                <div class="logo">
+                    <a href="index.html"
+                        ><img src="img/Logo.png" alt="logo"
+                    /></a>
+                </div>
+                <div class="flex *:mr-20">
+                    <ul role="link" class="custom-ul flex flex-col space-y-4">
+                        <li><p class="font-semibold">How It Works</p></li>
+                        <li><a href="#">Hire Employees</a></li>
+                        <li><a href="#">Hire Contractors</a></li>
+                        <li><a href="#">Global Payroll</a></li>
+                        <li><a href="#">Inegration</a></li>
+                    </ul>
+                    <ul class="custom-ul flex flex-col space-y-4">
+                        <li><p class="font-semibold">Company</p></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Countries</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                    <ul class="custom-ul flex flex-col space-y-4">
+                        <li><p class="font-semibold">Soltions</p></li>
+                        <li><a href="#">Compliances</a></li>
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Taxes</a></li>
+                        <li><a href="#">Entreprises</a></li>
+                    </ul>
+                    <ul class="custom-ul flex flex-col space-y-4">
+                        <li><p class="font-semibold">Resoucres</p></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Open API</a></li>
+                        <li><a href="#">Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex w-[1060px] items-center justify-between">
+                <div class="flex gap-8 *:cursor-pointer">
+                    <p class="text-center text-neutral-500">
+                        ©2022. All Rights Reserved.
+                    </p>
+                    <p class="text-center text-neutral-500">Privacy Policy</p>
+                    <p class="text-center text-neutral-500">Terms of Service</p>
+                </div>
+                <div class="social">
+                    <div class="flex justify-center gap-6">
+                        <a href=""
+                            ><img src="img/Social/instagram.png" alt=""
+                        /></a>
+                        <a href=""
+                            ><img src="img/Social/facebook.png" alt=""
+                        /></a>
+                        <a href=""
+                            ><img src="img/Social/linkedin.png" alt=""
+                        /></a>
+                        <a href=""
+                            ><img src="img/Social/twitter.png" alt=""
+                        /></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
