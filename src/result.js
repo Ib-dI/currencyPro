@@ -99,17 +99,17 @@ function updateCurrencyDisplay() {
 function getCurrencyInfo(currency) {
     const currencies = {
         USD: {
-            icon: "/img/flags/flag-united-states.png",
+            icon: "./img/flags/flag-united-states.png",
             description: "US Dollar",
             wikipedia: "https://en.wikipedia.org/wiki/United_States_dollar"
         },
         EUR: {
-            icon: "/img/flags/flag-european-union.png",
+            icon: "./img/flags/flag-european-union.png",
             description: "Euro",
             wikipedia: "https://en.wikipedia.org/wiki/Euro"
         },
         CAD: {
-            icon: "/img/flags/flag-canada.png",
+            icon: "./img/flags/flag-canada.png",
             description: "Canadian Dollar",
             wikipedia: "https://en.wikipedia.org/wiki/Canadian_dollar"
         },
@@ -117,7 +117,7 @@ function getCurrencyInfo(currency) {
     };
     return (
         currencies[currency] || {
-            icon: "img/flags/default.png",
+            icon: "./img/flags/default.png",
             description: "Unknown Currency",
             wikipedia: "https://en.wikipedia.org/wiki/Currency"
         }
