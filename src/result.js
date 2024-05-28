@@ -7,6 +7,7 @@ const baseDescription = document.querySelectorAll(".base-description");
 const targetIcon = document.getElementById("target-icon");
 const targetDescription = document.querySelectorAll(".target-description");
 const swapButton = document.getElementById("swap-button");
+const baseInput = document.getElementById("base-input");
 
 const baseLink = document.getElementById("base-link");
 
@@ -42,10 +43,12 @@ async function fetchAndDisplayExchangeRate() {
             const targetInfo = getCurrencyInfo(target);
             const rate = await fetchExchangeRate(base, target);
 
-            baseElmt.innerHTML = `1.00 ${baseInfo.description}=`;
+            baseElmt.innerHTML = `${baseInfo.symbol}1.00 ${baseInfo.description}=`;
+            baseInput.innerHTML = `${baseInfo.symbol}1.00`
             resultElement.innerHTML = formatExchangeRate(
                 rate,
                 targetInfo.description,
+                targetInfo.symbol
             );
             lastUpdate = new Date(); // Met à jour l'heure de la dernière mise à jour
             updateLastUpdatedTime(); // Met à jour l'affichage de l'heure
@@ -57,9 +60,9 @@ async function fetchAndDisplayExchangeRate() {
         resultElement.innerHTML = "Invalid parameters.";
     }
 }
-function formatExchangeRate(rate, description) {
-    const [integerPart, decimalPart] = rate.toFixed(4).split(".");
-    const formattedRate = `${integerPart}.${decimalPart.slice(0, 2)}<span class="text-neutral-400">${decimalPart.slice(2)}</span>`;
+function formatExchangeRate(rate, description, symbol) {
+    const [integerPart, decimalPart] = rate.toFixed(4).split('.');
+    const formattedRate = `${symbol}${integerPart}.${decimalPart.slice(0, 2)}<span class="text-neutral-500">${decimalPart.slice(2)}</span>`;
     return `${formattedRate} ${description}`;
 }
 // Fonction pour mettre à jour l'affichage des taux de change
@@ -109,50 +112,56 @@ function getCurrencyInfo(currency) {
             icon: "./img/flags/flag-united-states.png",
             description: "US Dollar",
             wikipedia: "https://en.wikipedia.org/wiki/United_States_dollar",
+            symbol: "$"
         },
         EUR: {
             icon: "./img/flags/flag-european-union.png",
             description: "Euro",
             wikipedia: "https://en.wikipedia.org/wiki/Euro",
+            symbol: "€"
         },
         CAD: {
             icon: "./img/flags/flag-canada.png",
             description: "Canadian Dollar",
             wikipedia: "https://en.wikipedia.org/wiki/Canadian_dollar",
+            symbol: "CA$"
         },
         PKR: {
             icon: "./img/flags/flag-pakistan.png",
             description: "Pakistani Rupees",
             wikipedia: "https://en.wikipedia.org/wiki/Pakistani_rupee",
+            symbol: "₨"
         },
         INR: {
             icon: "./img/flags/flag-india.png",
             description: "Indian Rupees",
             wikipedia: "https://en.wikipedia.org/wiki/Indian_rupee",
+            symbol: "₹"
         },
         GBP: {
             icon: "./img/flags/flag-united-kingdom.png",
             description: "Pound Sterling",
             wikipedia: "https://en.wikipedia.org/wiki/Pound_sterling",
+            symbol: "£"
         },
         BRL: {
             icon: "./img/flags/flag-brazil.png",
             description: "Brazilian Real",
             wikipedia: "https://en.wikipedia.org/wiki/Brazilian_real",
+            symbol: "R$"
         },
         IDR: {
             icon: "./img/flags/flag-indonesia.png",
             description: "Indonesian Rupiah",
             wikipedia: "https://en.wikipedia.org/wiki/Indonesian_rupiah",
-        },
-        // Ajoutez plus d'informations sur les devises ici
+            symbol: "Rp"
+        }
     };
-
     return (
         currencies[currency] || {
             icon: "./img/flags/default.png",
             description: "Unknown Currency",
-            wikipedia: "https://en.wikipedia.org/wiki/Currency",
+            symbol: ""
         }
     );
 }
