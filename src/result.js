@@ -17,18 +17,17 @@ const url = new URL(document.location);
 let base = url.searchParams.get("base");
 let target = url.searchParams.get("target");
 
-const refreshBtn = document.getElementById('refresh-btn');
-const lastUpdatedTime = document.getElementById('last-updated-time');
+const refreshBtn = document.getElementById("refresh-btn");
+const lastUpdatedTime = document.getElementById("last-updated-time");
 
 let lastUpdate; // Déclarez lastUpdate ici
-
 
 // Fonction pour afficher le temps écoulé depuis la dernière mise à jour
 function updateLastUpdatedTime() {
     if (!lastUpdate) return;
     const now = new Date();
     const minutesAgo = Math.floor((now - lastUpdate) / 60000);
-    lastUpdatedTime.innerText = `Last updated ${minutesAgo} minute${minutesAgo>1 ?"s":""} ago`;
+    lastUpdatedTime.innerText = `Last updated ${minutesAgo} minute${minutesAgo > 1 ? "s" : ""} ago`;
 }
 
 // Fonction pour démarrer le minuteur de mise à jour
@@ -44,7 +43,10 @@ async function fetchAndDisplayExchangeRate() {
             const rate = await fetchExchangeRate(base, target);
 
             baseElmt.innerHTML = `1.00 ${baseInfo.description}=`;
-            resultElement.innerHTML = `${rate} ${targetInfo.description}`;
+            resultElement.innerHTML = formatExchangeRate(
+                rate,
+                targetInfo.description,
+            );
             lastUpdate = new Date(); // Met à jour l'heure de la dernière mise à jour
             updateLastUpdatedTime(); // Met à jour l'affichage de l'heure
             startUpdateTimer();
@@ -55,15 +57,20 @@ async function fetchAndDisplayExchangeRate() {
         resultElement.innerHTML = "Invalid parameters.";
     }
 }
+function formatExchangeRate(rate, description) {
+    const [integerPart, decimalPart] = rate.toFixed(4).split(".");
+    const formattedRate = `${integerPart}.${decimalPart.slice(0, 2)}<span class="text-neutral-400">${decimalPart.slice(2)}</span>`;
+    return `${formattedRate} ${description}`;
+}
 // Fonction pour mettre à jour l'affichage des taux de change
 async function updateExchangeRate() {
-    fetchAndDisplayExchangeRate()
+    fetchAndDisplayExchangeRate();
     lastUpdate = new Date(); // Met à jour l'heure de la dernière mise à jour
     updateLastUpdatedTime(); // Met à jour l'affichage de l'heure
     startUpdateTimer(); // Démarre le minuteur pour les mises à jour
 }
 // Événement de clic pour le bouton de rafraîchissement
-refreshBtn.addEventListener('click', updateExchangeRate);
+refreshBtn.addEventListener("click", updateExchangeRate);
 
 swapButton.addEventListener("click", () => {
     [base, target] = [target, base]; // Swap base and target
@@ -101,25 +108,51 @@ function getCurrencyInfo(currency) {
         USD: {
             icon: "./img/flags/flag-united-states.png",
             description: "US Dollar",
-            wikipedia: "https://en.wikipedia.org/wiki/United_States_dollar"
+            wikipedia: "https://en.wikipedia.org/wiki/United_States_dollar",
         },
         EUR: {
             icon: "./img/flags/flag-european-union.png",
             description: "Euro",
-            wikipedia: "https://en.wikipedia.org/wiki/Euro"
+            wikipedia: "https://en.wikipedia.org/wiki/Euro",
         },
         CAD: {
             icon: "./img/flags/flag-canada.png",
             description: "Canadian Dollar",
-            wikipedia: "https://en.wikipedia.org/wiki/Canadian_dollar"
+            wikipedia: "https://en.wikipedia.org/wiki/Canadian_dollar",
+        },
+        PKR: {
+            icon: "./img/flags/flag-pakistan.png",
+            description: "Pakistani Rupees",
+            wikipedia: "https://en.wikipedia.org/wiki/Pakistani_rupee",
+        },
+        INR: {
+            icon: "./img/flags/flag-india.png",
+            description: "Indian Rupees",
+            wikipedia: "https://en.wikipedia.org/wiki/Indian_rupee",
+        },
+        GBP: {
+            icon: "./img/flags/flag-united-kingdom.png",
+            description: "Pound Sterling",
+            wikipedia: "https://en.wikipedia.org/wiki/Pound_sterling",
+        },
+        BRL: {
+            icon: "./img/flags/flag-brazil.png",
+            description: "Brazilian Real",
+            wikipedia: "https://en.wikipedia.org/wiki/Brazilian_real",
+        },
+        IDR: {
+            icon: "./img/flags/flag-indonesia.png",
+            description: "Indonesian Rupiah",
+            wikipedia: "https://en.wikipedia.org/wiki/Indonesian_rupiah",
         },
         // Ajoutez plus d'informations sur les devises ici
     };
+
     return (
         currencies[currency] || {
             icon: "./img/flags/default.png",
             description: "Unknown Currency",
-            wikipedia: "https://en.wikipedia.org/wiki/Currency"
+            wikipedia: "https://en.wikipedia.org/wiki/Currency",
         }
     );
 }
