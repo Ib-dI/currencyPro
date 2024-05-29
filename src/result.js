@@ -36,15 +36,17 @@ function startUpdateTimer() {
     updateLastUpdatedTime(); // Met à jour immédiatement
     setInterval(updateLastUpdatedTime, 60000); // Met à jour toutes les minutes
 }
-async function fetchAndDisplayExchangeRate() {
+const exchangeRateBtn = document.getElementById("exchangeRateBtn");
+
+async function fetchAndDisplayExchangeRate(amount = 1) {
     if (base && target) {
         try {
             const baseInfo = getCurrencyInfo(base);
             const targetInfo = getCurrencyInfo(target);
-            const rate = await fetchExchangeRate(base, target);
+            const rate = await fetchExchangeRate(base, target, amount);
 
-            baseElmt.innerHTML = `${baseInfo.symbol}1.00 ${baseInfo.description}=`;
-            baseInput.innerHTML = `${baseInfo.symbol}1.00`
+            baseElmt.innerHTML = `${baseInfo.symbol}${parseFloat(baseInput.value)} ${baseInfo.description}${parseFloat(baseInput.value) > 1 ? "s" : ""}=`;
+            // baseInput.innerHTML = `${baseInfo.symbol}1.00`
             resultElement.innerHTML = formatExchangeRate(
                 rate,
                 targetInfo.description,
@@ -60,14 +62,17 @@ async function fetchAndDisplayExchangeRate() {
         resultElement.innerHTML = "Invalid parameters.";
     }
 }
+
+
 function formatExchangeRate(rate, description, symbol) {
     const [integerPart, decimalPart] = rate.toFixed(4).split('.');
     const formattedRate = `${symbol}${integerPart}.${decimalPart.slice(0, 2)}<span class="text-neutral-500">${decimalPart.slice(2)}</span>`;
-    return `${formattedRate} ${description}`;
+    return `${formattedRate} ${description}${rate > 1 ? "s" : ""}`;
 }
 // Fonction pour mettre à jour l'affichage des taux de change
 async function updateExchangeRate() {
-    fetchAndDisplayExchangeRate();
+    const amount = parseFloat(baseInput.value);
+    fetchAndDisplayExchangeRate(amount);
     lastUpdate = new Date(); // Met à jour l'heure de la dernière mise à jour
     updateLastUpdatedTime(); // Met à jour l'affichage de l'heure
     startUpdateTimer(); // Démarre le minuteur pour les mises à jour
@@ -75,15 +80,16 @@ async function updateExchangeRate() {
 // Événement de clic pour le bouton de rafraîchissement
 refreshBtn.addEventListener("click", updateExchangeRate);
 
+exchangeRateBtn.addEventListener('click', updateExchangeRate);
 swapButton.addEventListener("click", () => {
     [base, target] = [target, base]; // Swap base and target
     updateCurrencyDisplay();
-    fetchAndDisplayExchangeRate();
+    fetchAndDisplayExchangeRate(parseFloat(baseInput.value));
 });
 
 async function init() {
     updateCurrencyDisplay();
-    await fetchAndDisplayExchangeRate();
+    await fetchAndDisplayExchangeRate(parseFloat(baseInput.value));
 }
 
 init();
@@ -167,9 +173,9 @@ function getCurrencyInfo(currency) {
 }
 
 // Fonction pour récupérer le taux de change
-async function fetchExchangeRate(base, target) {
+async function fetchExchangeRate(base, target, amount = 1) {
     const apiKey = "39d41333dc932cc45f07b10a";
-    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${base}/${target}`;
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${base}/${target}/${amount}`;
 
     try {
         const response = await fetch(url);
@@ -178,7 +184,7 @@ async function fetchExchangeRate(base, target) {
         }
         const data = await response.json();
         if (data.conversion_rate) {
-            return data.conversion_rate;
+            return data.conversion_result;
         } else {
             throw new Error("Le taux de conversion n'est pas disponible");
         }
@@ -187,3 +193,4 @@ async function fetchExchangeRate(base, target) {
         throw error;
     }
 }
+
