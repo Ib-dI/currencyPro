@@ -13,6 +13,16 @@ const baseLink = document.getElementById("base-link");
 
 const targetLink = document.getElementById("target-link");
 // Ajoute un écouteur d'événement pour quand le DOM est complètement chargé
+const menuElementsToToggle = document.querySelectorAll(".toggle-menu");
+const iconeToggle = document.querySelector(".icone-toggle");
+
+const toggleMenu = () => {
+    menuElementsToToggle.forEach(menu => {
+        menu.classList.toggle("hidden");
+    });
+}
+
+iconeToggle.addEventListener("click", toggleMenu);
 
 const url = new URL(document.location);
 let base = url.searchParams.get("base");
