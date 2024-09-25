@@ -8,32 +8,54 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body class="text-dark">
-        <header class="ml-20 flex h-24 w-max items-center gap-56">
-            <div class="">
-                <a href="index.html"
-                    ><img src="img/Logo.png" alt="" srcset=""
-                /></a>
-            </div>
-            <nav class="flex items-center gap-44">
-                <ul class="nav flex gap-12">
-                    <li><a href="index.html">Currency Converter</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Resources</a></li>
-                </ul>
-                <div class="flex w-60 gap-4 *:cursor-pointer">
-                    <button class="w-16 pl-4">Log in</button>
-                    <button
-                        class="h-12 w-36 rounded-[100px] bg-brands text-center text-white transition delay-150 duration-300 ease-in-out hover:bg-blue-800"
-                    >
-                        Learn More
-                    </button>
-                </div>
-            </nav>
-        </header>
-        <div
-            class="flex flex-col items-center gap-7 bg-neutral-100 pb-[60px] pt-10 text-center"
+        <!-- Navbar -->
+        <nav
+            class="fixed top-0 z-20 grid w-screen grid-cols-none bg-gray-50 p-4 shadow-md md:relative md:mx-auto md:max-w-7xl md:grid-cols-menu md:shadow-none"
         >
-            <div class="px-48">
+            <div class="flex items-center mb-1 md:mb-0 justify-between md:justify-center">
+                <a href="index.html">
+                    <img src="img/Logo.png" alt="" />
+                </a>
+                <button
+                    class="icone-toggle max-w-10 inline-flex items-center justify-center rounded-lg bg-white p-2 ring-1 ring-black ring-opacity-20 md:hidden"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <ul
+                class="toggle-menu hidden flex-col bg-gray-50 px-1 pt-6 md:flex md:w-auto md:flex-row md:items-center md:justify-center md:space-x-10 md:bg-transparent md:pt-0"
+            >
+                <li><a href="index.html">Currency Converter</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+            <div class="toggle-menu hidden flex flex-col justify-center items-center mt-6 md:mt-0 md:justify-end md:flex md:flex-row">
+                <a href="#" class="w-16 text-center md:mr-4">Log in</a>
+                <button
+                    class="h-12 w-36 mt-2 rounded-[100px] bg-brands text-center text-white transition delay-150 duration-300 ease-in-out hover:bg-blue-800"
+                >
+                    Learn More
+                </button>
+            </div>
+        </nav>
+        <!-- Select Currency -->
+        <div
+            class="flex flex-col items-center gap-7 bg-neutral-100 pb-[60px] pt-32 md:pt-8 text-center"
+        >
+            <div class="px-2 md:px-48">
                 <h1 class="text-4xl font-semibold">
                     Currency<span class="text-brands">pro</span> Converter
                 </h1>
@@ -155,72 +177,72 @@
                 </div>
             </div>
         </div>
-
+        <!-- Footer -->
         <footer
-            class="flex flex-col items-center justify-center space-y-28 bg-white pb-12 pt-28"
+        class="flex flex-col p-4 items-center justify-center space-y-28 bg-white md:pl-6 lg:pb-12 lg:pt-28"
         >
-            <div class="flex gap-12">
-                <div class="logo">
-                    <a href="index.html"
-                        ><img src="img/Logo.png" alt="logo"
+        <div class="flex flex-wrap gap-12">
+            <div class="logo">
+                <a href="index.html"
+                    ><img src="img/Logo.png" alt="logo"
+                /></a>
+            </div>
+            <div class="flex justify-center gap-y-3.5 flex-wrap *:mr-16 *:w-28">
+                <ul role="link" class="custom-ul flex flex-col space-y-4">
+                    <li><p class="font-semibold">How It Works</p></li>
+                    <li><a href="#">Hire Employees</a></li>
+                    <li><a href="#">Hire Contractors</a></li>
+                    <li><a href="#">Global Payroll</a></li>
+                    <li><a href="#">Inegration</a></li>
+                </ul>
+                <ul class="custom-ul flex flex-col space-y-4">
+                    <li><p class="font-semibold">Company</p></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Countries</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+                <ul class="custom-ul flex flex-col space-y-4">
+                    <li><p class="font-semibold">Soltions</p></li>
+                    <li><a href="#">Compliances</a></li>
+                    <li><a href="#">Payments</a></li>
+                    <li><a href="#">Taxes</a></li>
+                    <li><a href="#">Entreprises</a></li>
+                </ul>
+                <ul class="custom-ul flex flex-col space-y-4">
+                    <li><p class="font-semibold">Resoucres</p></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Open API</a></li>
+                    <li><a href="#">Guide</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex w-screen lg:w-9/12 px-5 md flex-col lg:flex-row items-center justify-between">
+            <div class="flex mb-6 lg:mb-0 gap-8 *:cursor-pointer *:text-sm">
+                <p class="text-center text-neutral-500 ">
+                    ©2022. All Rights Reserved.
+                </p>
+                <p class="text-center text-neutral-500">Privacy Policy</p>
+                <p class="text-center text-neutral-500">Terms of Service</p>
+            </div>
+            <div class="social">
+                <div class="flex justify-center gap-6">
+                    <a href=""
+                        ><img src="img/Social/instagram.png" alt=""
+                    /></a>
+                    <a href=""
+                        ><img src="img/Social/facebook.png" alt=""
+                    /></a>
+                    <a href=""
+                        ><img src="img/Social/linkedin.png" alt=""
+                    /></a>
+                    <a href=""
+                        ><img src="img/Social/twitter.png" alt=""
                     /></a>
                 </div>
-                <div class="flex *:mr-20">
-                    <ul role="link" class="custom-ul flex flex-col space-y-4">
-                        <li><p class="font-semibold">How It Works</p></li>
-                        <li><a href="#">Hire Employees</a></li>
-                        <li><a href="#">Hire Contractors</a></li>
-                        <li><a href="#">Global Payroll</a></li>
-                        <li><a href="#">Inegration</a></li>
-                    </ul>
-                    <ul class="custom-ul flex flex-col space-y-4">
-                        <li><p class="font-semibold">Company</p></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Countries</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                    <ul class="custom-ul flex flex-col space-y-4">
-                        <li><p class="font-semibold">Soltions</p></li>
-                        <li><a href="#">Compliances</a></li>
-                        <li><a href="#">Payments</a></li>
-                        <li><a href="#">Taxes</a></li>
-                        <li><a href="#">Entreprises</a></li>
-                    </ul>
-                    <ul class="custom-ul flex flex-col space-y-4">
-                        <li><p class="font-semibold">Resoucres</p></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blogs</a></li>
-                        <li><a href="#">Open API</a></li>
-                        <li><a href="#">Guide</a></li>
-                    </ul>
-                </div>
             </div>
-            <div class="flex w-[1060px] items-center justify-between">
-                <div class="flex gap-8 *:cursor-pointer">
-                    <p class="text-center text-neutral-500">
-                        ©2022. All Rights Reserved.
-                    </p>
-                    <p class="text-center text-neutral-500">Privacy Policy</p>
-                    <p class="text-center text-neutral-500">Terms of Service</p>
-                </div>
-                <div class="social">
-                    <div class="flex justify-center gap-6">
-                        <a href=""
-                            ><img src="img/Social/instagram.png" alt=""
-                        /></a>
-                        <a href=""
-                            ><img src="img/Social/facebook.png" alt=""
-                        /></a>
-                        <a href=""
-                            ><img src="img/Social/linkedin.png" alt=""
-                        /></a>
-                        <a href=""
-                            ><img src="img/Social/twitter.png" alt=""
-                        /></a>
-                    </div>
-                </div>
-            </div>
+        </div>
         </footer>
         <script type="module" src="./src/result.js"></script>
     </body>

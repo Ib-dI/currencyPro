@@ -8,28 +8,57 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body class="text-dark">
-        <header class="ml-20 flex h-24 w-max items-center gap-56">
-            <div class=""><a href="index.html"><img src="img/Logo.png" alt="" srcset="" /></a></div>
-            <nav class="flex items-center gap-44">
-                <ul class="flex gap-12 nav">
-                    <li><a href="index.html">Currency Converter</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Resources</a></li>
-                </ul>
-                <div class="flex w-60 gap-4 *:cursor-pointer">
-                    <button class="w-16 pl-4">Log in</button>
-                    <button
-                        class="transition ease-in-out delay-150 h-12 w-36 rounded-[100px] bg-brands text-center text-white hover:bg-blue-800 duration-300"
-                    >
-                        Learn More
-                    </button>
-                </div>
-            </nav>
-        </header>
-        <div
-            class="flex flex-col items-center gap-7 bg-neutral-100 pb-[60px] pt-10 text-center"
+        
+
+        <!-- Navbar -->
+        <nav
+            class="fixed top-0 z-20 grid w-screen grid-cols-none bg-gray-50 p-4 shadow-md md:relative md:mx-auto md:max-w-7xl md:grid-cols-menu md:shadow-none"
         >
-            <div class="px-48">
+            <div class="flex items-center mb-1 md:mb-0 justify-between md:justify-center">
+                <a href="index.html">
+                    <img src="img/Logo.png" alt="" />
+                </a>
+                <button
+                    class="icone-toggle max-w-10 inline-flex items-center justify-center rounded-lg bg-white p-2 ring-1 ring-black ring-opacity-20 md:hidden"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <ul
+                class="toggle-menu hidden flex-col bg-gray-50 px-1 pt-6 md:flex md:w-auto md:flex-row md:items-center md:justify-center md:space-x-10 md:bg-transparent md:pt-0"
+            >
+                <li><a href="index.html">Currency Converter</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+            <div class="toggle-menu hidden flex flex-col justify-center items-center mt-6 md:mt-0 md:justify-end md:flex md:flex-row">
+                <a href="#" class="w-16 text-center md:mr-4">Log in</a>
+                <button
+                    class="h-12 w-36 mt-2 rounded-[100px] bg-brands text-center text-white transition delay-150 duration-300 ease-in-out hover:bg-blue-800"
+                >
+                    Learn More
+                </button>
+            </div>
+        </nav>
+        <!-- Select Currency -->
+
+        <div
+            class="flex flex-col items-center gap-7 bg-neutral-100 pb-[60px] pt-32 md:pt-8 text-center"
+        >
+            <div class="md:px-48 px-5">
                 <h1 class="text-4xl font-semibold">
                     The safe and easy way to
                     <span class="text-brands">exchange</span> your
@@ -44,11 +73,14 @@
             <div class="flex w-10/12 flex-col gap-7 text-left">
                 <div class="base">
                     <h2 class="mb-6 text-3xl">Select your base currency</h2>
-                    <ul role="link" class="flex flex-wrap w-full gap-5 *:cursor-pointer">
+                    <ul
+                        role="link"
+                        class="grid gap-4 grid-cols-2 my-10 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 content-center place-items-center *:cursor-pointer"
+                    >
                         <li>
                             <button
                                 data-currency="USD"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -58,7 +90,7 @@
                                     />
                                     <p class="font-bold">USD</p>
                                 </div>
-                                <p class="text-neutral-500">
+                                <p class="text-neutral-500 text-xs sm:text-sm">
                                     United States Dollar
                                 </p>
                             </button>
@@ -66,7 +98,7 @@
                         <li>
                             <button
                                 data-currency="EUR"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -76,13 +108,13 @@
                                     />
                                     <p class="font-bold">EUR</p>
                                 </div>
-                                <p class="text-neutral-500">Euro</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Euro</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="CAD"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -92,13 +124,13 @@
                                     />
                                     <p class="font-bold">CAD</p>
                                 </div>
-                                <p class="text-neutral-500">Canadian Dollar</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Canadian Dollar</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="PKR"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -108,13 +140,13 @@
                                     />
                                     <p class="font-bold">PKR</p>
                                 </div>
-                                <p class="text-neutral-500">Pakistani Rupees</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Pakistani Rupees</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="INR"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -124,13 +156,13 @@
                                     />
                                     <p class="font-bold">INR</p>
                                 </div>
-                                <p class="text-neutral-500">Indian Rupees</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Indian Rupees</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="GBP"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -140,13 +172,13 @@
                                     />
                                     <p class="font-bold">GBP</p>
                                 </div>
-                                <p class="text-neutral-500">Pound Sterling</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Pound Sterling</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="BRL"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -156,13 +188,13 @@
                                     />
                                     <p class="font-bold">BRL</p>
                                 </div>
-                                <p class="text-neutral-500">Brazilian Real</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Brazilian Real</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="IDR"
-                                class="currency-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="currency-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -172,18 +204,23 @@
                                     />
                                     <p class="font-bold">IDR</p>
                                 </div>
-                                <p class="text-neutral-500">Indonesian Rupiah</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">
+                                    Indonesian Rupiah
+                                </p>
                             </button>
                         </li>
                     </ul>
                 </div>
                 <div class="target">
                     <h2 class="mb-6 text-3xl">Select your target currency</h2>
-                    <ul role="link" class="flex flex-wrap w-full gap-5 *:cursor-pointer">
+                    <ul
+                        role="link"
+                        class="grid gap-4 grid-cols-2 my-10 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 content-center place-items-center *:cursor-pointer"
+                    >
                         <li>
                             <button
                                 data-currency="USD"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -193,7 +230,7 @@
                                     />
                                     <p class="font-bold">USD</p>
                                 </div>
-                                <p class="text-neutral-500">
+                                <p class="text-neutral-500 text-xs sm:text-sm">
                                     United States Dollar
                                 </p>
                             </button>
@@ -201,7 +238,7 @@
                         <li>
                             <button
                                 data-currency="EUR"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -211,13 +248,13 @@
                                     />
                                     <p class="font-bold">EUR</p>
                                 </div>
-                                <p class="text-neutral-500">Euro</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Euro</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="CAD"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -227,13 +264,13 @@
                                     />
                                     <p class="font-bold">CAD</p>
                                 </div>
-                                <p class="text-neutral-500">Canadian Dollar</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Canadian Dollar</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="PKR"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -243,13 +280,13 @@
                                     />
                                     <p class="font-bold">PKR</p>
                                 </div>
-                                <p class="text-neutral-500">Pakistani Rupees</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Pakistani Rupees</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="INR"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -259,13 +296,13 @@
                                     />
                                     <p class="font-bold">INR</p>
                                 </div>
-                                <p class="text-neutral-500">Indian Rupees</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Indian Rupees</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="GBP"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -275,13 +312,13 @@
                                     />
                                     <p class="font-bold">GBP</p>
                                 </div>
-                                <p class="text-neutral-500">Pound Sterling</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Pound Sterling</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="BRL"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -291,13 +328,13 @@
                                     />
                                     <p class="font-bold">BRL</p>
                                 </div>
-                                <p class="text-neutral-500">Brazilian Real</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">Brazilian Real</p>
                             </button>
                         </li>
                         <li>
                             <button
                                 data-currency="IDR"
-                                class="target-btn h-[73px] w-[208px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
+                                class="target-btn w-40 h-16 sm:h-[80px] sm:w-[220px] rounded-2xl border-brands bg-white px-6 py-3 drop-shadow-md hover:border-2"
                             >
                                 <div class="flex gap-1">
                                     <img
@@ -307,7 +344,9 @@
                                     />
                                     <p class="font-bold">IDR</p>
                                 </div>
-                                <p class="text-neutral-500">Indonesian Rupiah</p>
+                                <p class="text-neutral-500 text-xs sm:text-sm">
+                                    Indonesian Rupiah
+                                </p>
                             </button>
                         </li>
                     </ul>
@@ -321,14 +360,19 @@
                 </button>
             </div>
         </div>
+
+        <!-- Footer -->
+        
         <footer
-            class="flex flex-col items-center justify-center space-y-28 bg-white pb-12 pt-28"
+            class="flex flex-col p-4 items-center justify-center space-y-28 bg-white md:pl-6 lg:pb-12 lg:pt-28"
         >
-            <div class="flex gap-12">
+            <div class="flex flex-wrap gap-12">
                 <div class="logo">
-                    <a href="index.html"><img src="img/Logo.png" alt="logo" /></a>
+                    <a href="index.html"
+                        ><img src="img/Logo.png" alt="logo"
+                    /></a>
                 </div>
-                <div class="flex *:mr-20">
+                <div class="flex justify-center gap-y-3.5 flex-wrap *:mr-16 *:w-28">
                     <ul role="link" class="custom-ul flex flex-col space-y-4">
                         <li><p class="font-semibold">How It Works</p></li>
                         <li><a href="#">Hire Employees</a></li>
@@ -359,9 +403,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="flex w-[1060px] items-center justify-between">
-                <div class="flex gap-8 *:cursor-pointer">
-                    <p class="text-center text-neutral-500">
+            <div class="flex w-screen lg:w-9/12 px-5 md flex-col lg:flex-row items-center justify-between">
+                <div class="flex mb-6 lg:mb-0 gap-8 *:cursor-pointer *:text-sm">
+                    <p class="text-center text-neutral-500 ">
                         ©2022. All Rights Reserved.
                     </p>
                     <p class="text-center text-neutral-500">Privacy Policy</p>

@@ -2,7 +2,9 @@
 export default {
     content: ["./*.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {
+        extend: {gridTemplateColumns: {
+            "menu": "176px 1fr 300px"
+            },
             colors: {
                 brands: "#355FE5",
                 dark: "#OA112F"
